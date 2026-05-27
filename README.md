@@ -1,10 +1,10 @@
-# 🏨 HotelCheck — Multi-Branch Hotel Reservation Management Web Application
+# HotelCheck — Multi-Branch Hotel Reservation Management Web Application
 
 A modern, responsive self check-in portal for multi-branch hotel chains. Guests can log in, view their upcoming reservations, complete the self check-in process (identity verification, payment, rooming list), and manage their profile — all from a single web interface.
 
 ---
 
-## ✨ Features
+##  Features
 
 - **Guest Authentication** — Login and registration with form validation
 - **Dashboard** — Overview of upcoming reservations for the logged-in guest
@@ -19,7 +19,7 @@ A modern, responsive self check-in portal for multi-branch hotel chains. Guests 
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 This is a pure HTML/CSS/JavaScript application — no build tools or dependencies required.
 
@@ -37,7 +37,7 @@ This is a pure HTML/CSS/JavaScript application — no build tools or dependencie
 
 ---
 
-## 🔐 Demo Login Credentials
+##  Demo Login Credentials
 
 Use the following credentials to explore the application:
 
@@ -50,7 +50,7 @@ Use the following credentials to explore the application:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── index.html              # Main entry point (single-page app shell)
@@ -70,7 +70,7 @@ Use the following credentials to explore the application:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Technology | Purpose                     |
 |------------|-----------------------------|
@@ -81,7 +81,7 @@ Use the following credentials to explore the application:
 
 ---
 
-## 📱 Responsive Breakpoints
+##  Responsive Breakpoints
 
 | Breakpoint | Target Device |
 |------------|---------------|
@@ -91,7 +91,7 @@ Use the following credentials to explore the application:
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/my-feature`
@@ -101,12 +101,12 @@ Use the following credentials to explore the application:
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👨‍💻 Academic Project
+##  Academic Project
 
 > This project was developed as part of an academic course on Multi-Branch Hotel Reservation Management Systems.
