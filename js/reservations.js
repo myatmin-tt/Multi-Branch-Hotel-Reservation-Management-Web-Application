@@ -249,10 +249,14 @@
             });
         });
 
-        // Modify
+        // Modify → open modify section pre-filled
         document.querySelectorAll('.modify-btn').forEach(btn => {
             btn.addEventListener('click', function () {
-                App.showToast('Modification requests can be made via our front desk or customer support.', 'info', 4000);
+                const resId = this.dataset.id;
+                const res = App.reservationData.find(r => r.id === resId);
+                if (res && typeof App.openModifyReservation === 'function') {
+                    App.openModifyReservation(res);
+                }
             });
         });
 
@@ -272,10 +276,16 @@
             });
         });
 
-        // Book Again
+        // Book Again → open booking section pre-filled
         document.querySelectorAll('.book-again-btn').forEach(btn => {
             btn.addEventListener('click', function () {
-                App.showToast('Redirecting to booking page with pre-filled details…', 'info');
+                // Grab data attributes if available, otherwise use generic past stay data
+                const hotel    = this.dataset.hotel    || '';
+                const roomType = this.dataset.roomType || '';
+                const guests   = this.dataset.guests   || '2';
+                if (typeof App.openBookingSection === 'function') {
+                    App.openBookingSection({ hotel, roomType, guests, mode: 'again' });
+                }
             });
         });
     }

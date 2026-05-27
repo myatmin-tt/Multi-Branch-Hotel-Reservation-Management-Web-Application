@@ -11,8 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 
 <body>
@@ -123,7 +121,6 @@
                         </div>
                     </div>
                     <button type="button" id="demo-autofill-btn" class="demo-fill-all">
-                        <i data-lucide="zap" class="lucide-btn-icon"></i>
                         Fill credentials &amp; sign in
                     </button>
                 </div>
@@ -198,7 +195,7 @@
             <!-- Welcome Banner -->
             <div class="welcome-banner">
                 <div class="welcome-text">
-                    <h1 id="welcome-heading">Good morning, John! </h1>
+                    <h1 id="welcome-heading">Good morning, John!</h1>
                     <p>Here's an overview of your upcoming stays.</p>
                 </div>
                 <div class="welcome-meta">
@@ -597,7 +594,10 @@
                             <p>5 nights · 2 guests</p>
                             <div class="history-status completed">Completed</div>
                         </div>
-                        <button class="btn-secondary book-again-btn">Book Again</button>
+                        <button class="btn-secondary book-again-btn"
+                                data-hotel="HotelCheck Grand Resort"
+                                data-room-type="Deluxe Suite"
+                                data-guests="2">Book Again</button>
                     </div>
 
                     <div class="history-item">
@@ -612,10 +612,187 @@
                             <p>2 nights · 2 guests</p>
                             <div class="history-status completed">Completed</div>
                         </div>
-                        <button class="btn-secondary book-again-btn">Book Again</button>
+                        <button class="btn-secondary book-again-btn"
+                                data-hotel="HotelCheck Downtown"
+                                data-room-type="Premium King Room"
+                                data-guests="2">Book Again</button>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- ====================================================
+             SECTION: MODIFY RESERVATION
+        ==================================================== -->
+        <div id="modify-reservation-section" class="card wide-card" style="display: none;">
+            <div class="section-back-bar">
+                <button type="button" id="modify-back-btn" class="btn-ghost-back">Back to Reservations</button>
+            </div>
+            <h1 class="card-title">Modify Reservation</h1>
+            <p class="card-subtitle" id="modify-res-subtitle">Update the details for your reservation below.</p>
+
+            <form id="modify-reservation-form" novalidate>
+                <div class="res-summary-badge" id="modify-res-badge">
+                    <span class="badge-label">Reservation</span>
+                    <span id="modify-badge-id" class="badge-id">—</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modify-checkin">Check-in Date</label>
+                        <input type="date" id="modify-checkin">
+                    </div>
+                    <div class="form-group">
+                        <label for="modify-checkout">Check-out Date</label>
+                        <input type="date" id="modify-checkout">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-group-grow">
+                        <label for="modify-room-type">Room Type</label>
+                        <select id="modify-room-type">
+                            <option value="Standard Twin">Standard Twin</option>
+                            <option value="Standard King">Standard King</option>
+                            <option value="Deluxe King">Deluxe King</option>
+                            <option value="Executive Suite">Executive Suite</option>
+                            <option value="Premier Suite">Premier Suite</option>
+                            <option value="Presidential Suite">Presidential Suite</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modify-guests">Number of Guests</label>
+                        <select id="modify-guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modify-special-requests">Special Requests</label>
+                    <textarea id="modify-special-requests" rows="3" placeholder="Any special requests or notes?"></textarea>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <div class="alert alert-warning" id="modify-warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Modifications are subject to availability and may affect your total price. A confirmation email will be sent once processed.
+                </div>
+
+                <div class="btn-actions">
+                    <button type="button" id="modify-cancel-btn" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ====================================================
+             SECTION: BOOK RESERVATION (new booking / book again)
+        ==================================================== -->
+        <div id="booking-section" class="card wide-card" style="display: none;">
+            <div class="section-back-bar">
+                <button type="button" id="booking-back-btn" class="btn-ghost-back">Back to Reservations</button>
+            </div>
+            <h1 class="card-title" id="booking-section-title">New Reservation</h1>
+            <p class="card-subtitle" id="booking-section-subtitle">Fill in the details below to complete your booking.</p>
+
+            <form id="booking-form" novalidate>
+
+                <div class="form-group">
+                    <label for="booking-hotel">Hotel Property</label>
+                    <select id="booking-hotel">
+                        <option value="HotelCheck Grand Resort">HotelCheck Grand Resort — Yangon</option>
+                        <option value="HotelCheck Downtown">HotelCheck Downtown — Mandalay</option>
+                        <option value="HotelCheck Lakeside">HotelCheck Lakeside — Inle Lake</option>
+                        <option value="HotelCheck Heritage">HotelCheck Heritage — Bagan</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="booking-checkin">Check-in Date</label>
+                        <input type="date" id="booking-checkin">
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-checkout">Check-out Date</label>
+                        <input type="date" id="booking-checkout">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group form-group-grow">
+                        <label for="booking-room-type">Room Type</label>
+                        <select id="booking-room-type">
+                            <option value="Standard Twin">Standard Twin</option>
+                            <option value="Standard King">Standard King</option>
+                            <option value="Deluxe King">Deluxe King</option>
+                            <option value="Executive Suite">Executive Suite</option>
+                            <option value="Premier Suite">Premier Suite</option>
+                            <option value="Presidential Suite">Presidential Suite</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-guests">Number of Guests</label>
+                        <select id="booking-guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-name">Primary Guest Name</label>
+                    <input type="text" id="booking-name" placeholder="Full name as on passport">
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-email">Contact Email</label>
+                    <input type="email" id="booking-email" placeholder="Confirmation will be sent here">
+                </div>
+
+                <div class="form-group">
+                    <label for="booking-special-requests">Special Requests</label>
+                    <textarea id="booking-special-requests" rows="3" placeholder="Dietary requirements, accessibility needs, preferences..."></textarea>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Booking Price Summary -->
+                <div class="booking-price-summary" id="booking-price-summary">
+                    <div class="price-row">
+                        <span>Room rate</span>
+                        <span id="booking-rate-display">—</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Duration</span>
+                        <span id="booking-nights-display">—</span>
+                    </div>
+                    <div class="price-row price-row-total">
+                        <span>Estimated Total</span>
+                        <span id="booking-total-display">—</span>
+                    </div>
+                </div>
+
+                <div class="form-group checkbox-container" style="margin-top:1rem;">
+                    <input type="checkbox" id="booking-terms">
+                    <label for="booking-terms">I agree to the hotel's terms, conditions, and cancellation policy.</label>
+                </div>
+
+                <div class="btn-actions">
+                    <button type="button" id="booking-cancel-btn" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary" id="booking-submit-btn">Confirm Reservation</button>
+                </div>
+            </form>
         </div>
 
     </div>
@@ -667,6 +844,7 @@
     <script src="js/auth.js"></script>
     <script src="js/reservations.js"></script>
     <script src="js/checkin.js"></script>
+    <script src="js/booking.js"></script>
     <script src="js/profile.js"></script>
 
 </body>

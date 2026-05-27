@@ -28,7 +28,9 @@
         registration: document.getElementById('registration-section'),
         dashboard:    document.getElementById('dashboard-section'),
         profile:      document.getElementById('profile-section'),
-        reservations: document.getElementById('my-reservations-section')
+        reservations: document.getElementById('my-reservations-section'),
+        modify:       document.getElementById('modify-reservation-section'),
+        booking:      document.getElementById('booking-section')
     };
 
     /* -----------------------------------------------------------------------
@@ -72,8 +74,7 @@
         if (heading && user) {
             const hour = new Date().getHours();
             const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-            heading.innerHTML = `${greeting}, ${user.firstName}! <i data-lucide="hand-metal" class="greeting-icon"></i>`;
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            heading.textContent = `${greeting}, ${user.firstName}!`;
         }
     }
 
@@ -203,9 +204,6 @@
 
         // Start on login
         showSection('login');
-
-        // Initialise all Lucide icons in static HTML
-        if (typeof lucide !== 'undefined') lucide.createIcons();
 
         // Expose public API
         App.showSection   = showSection;
