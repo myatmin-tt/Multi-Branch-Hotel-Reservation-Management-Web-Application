@@ -89,7 +89,7 @@
             // Reset check-in form
             resetCheckinForm();
 
-            App.showToast('🎉 Check-in complete! Your room is ready. Enjoy your stay!', 'success', 5000);
+            App.showToast('Check-in complete! Your room is ready. Enjoy your stay!', 'success', 5000);
 
             if (btn) {
                 btn.disabled = false;

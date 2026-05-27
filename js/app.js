@@ -72,7 +72,8 @@
         if (heading && user) {
             const hour = new Date().getHours();
             const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-            heading.textContent = `${greeting}, ${user.firstName}! 👋`;
+            heading.innerHTML = `${greeting}, ${user.firstName}! <i data-lucide="hand-metal" class="greeting-icon"></i>`;
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
     }
 
@@ -202,6 +203,9 @@
 
         // Start on login
         showSection('login');
+
+        // Initialise all Lucide icons in static HTML
+        if (typeof lucide !== 'undefined') lucide.createIcons();
 
         // Expose public API
         App.showSection   = showSection;

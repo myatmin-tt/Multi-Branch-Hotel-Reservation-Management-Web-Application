@@ -88,7 +88,8 @@
                     <div class="reservation-status status-${res.status}">${statusLabel(res.status)}</div>
                 </div>
                 <div class="reservation-dates">
-                    📅 ${formatShortDate(res.checkIn)} → ${formatShortDate(res.checkOut)} &nbsp;·&nbsp; ${nights} night${nights !== 1 ? 's' : ''}
+                    <span class="date-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                    ${formatShortDate(res.checkIn)} &rarr; ${formatShortDate(res.checkOut)} &nbsp;&middot;&nbsp; ${nights} night${nights !== 1 ? 's' : ''}
                 </div>
                 <div class="reservation-info">
                     <span><strong>Room:</strong> ${res.roomType}</span>
@@ -204,7 +205,8 @@
                     <div class="reservation-status status-${res.status}">${statusLabel(res.status)}</div>
                 </div>
                 <div class="reservation-dates">
-                    📅 ${formatDate(res.checkIn)} → ${formatDate(res.checkOut)} &nbsp;·&nbsp; ${nights} night${nights !== 1 ? 's' : ''}
+                    <span class="date-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                    ${formatDate(res.checkIn)} &rarr; ${formatDate(res.checkOut)} &nbsp;&middot;&nbsp; ${nights} night${nights !== 1 ? 's' : ''}
                 </div>
                 <div class="reservation-info" style="margin-top:0.625rem;">
                     <span><strong>Room:</strong> ${res.roomType}</span>
